@@ -1,0 +1,21 @@
+{
+  "name": "facebook-user-page-react-chrome-extension",
+  "version": "1.0.0",
+  "description": "Extension to extract UUID and username of facebook post users",
+  "main": "script.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jocelyn10/facebook-user-page-react-chrome-extension.git"
+  },
+  "author": "Jocelyn Nsa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jocelyn10/facebook-user-page-react-chrome-extension/issues"
+  },
+  "homepage": "https://github.com/Jocelyn10/facebook-user-page-react-chrome-extension#readme"
+}
