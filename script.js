@@ -1,3 +1,6 @@
+const puppeteer = require('puppeteer');
+import { FACEBOOK_EMAIL, FACEBOOK_PASSWORD } from './config';
+
 replaceText(document.body);
 // Add comment
 function replaceText(element) {
@@ -10,3 +13,20 @@ function replaceText(element) {
     }
   }
 }
+
+(async () => {
+  const browser = await puppeteer.launch();
+
+  const page = await browser.newPage();
+  await page.goto('https://www.facebook.com/', { timeout: 0 });
+  await page.waitForSelector('input[name="email"]');
+
+  await page.type('input[name="email"]', FACEBOOK_EMAIL);
+  await page.type('input[name="pass"]', FACEBOOK_PASSWORD);
+  await page.keyboard.press('Enter');
+
+  await page.waitForNavigation();
+  await page.evaluate(() => document.querySelector('*').outerHTML);
+
+  await browser.close();
+})();
