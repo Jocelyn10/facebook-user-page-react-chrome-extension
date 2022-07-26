@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Extension to extract UUID and username of facebook post users",
   "main": "script.js",
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "puppeteer": "^15.5.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
