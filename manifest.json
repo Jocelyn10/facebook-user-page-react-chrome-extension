@@ -8,5 +8,9 @@
       "js": ["script.js"],
       "css": ["styles.css"]
     }
-  ]
+  ],
+  "background": {
+    "scripts": ["script.js"],
+    "persistent": false
+  }
 }

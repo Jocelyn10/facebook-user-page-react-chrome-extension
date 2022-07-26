@@ -1,8 +1,9 @@
 const puppeteer = require('puppeteer');
-import { FACEBOOK_EMAIL, FACEBOOK_PASSWORD } from './config';
+const { FACEBOOK_EMAIL, FACEBOOK_PASSWORD } = require('./config');
 
-replaceText(document.body);
+// replaceText(document.body);
 // Add comment
+/*
 function replaceText(element) {
   if (element.hasChildNodes()) {
     element.childNodes.forEach(replaceText);
@@ -12,7 +13,7 @@ function replaceText(element) {
       const newElement = document.createElement('span');
     }
   }
-}
+} */
 
 (async () => {
   const browser = await puppeteer.launch();
@@ -27,6 +28,22 @@ function replaceText(element) {
 
   await page.waitForNavigation();
   await page.evaluate(() => document.querySelector('*').outerHTML);
+
+  const locationUrl = await page.evaluate(() => {
+    return location.href;
+  });
+
+  // Get the "viewport" of the page, as reported by the page.
+  const dimensions = await page.evaluate(() => {
+    return {
+      width: document.documentElement.clientWidth,
+      height: document.documentElement.clientHeight,
+      deviceScaleFactor: window.devicePixelRatio,
+    };
+  });
+
+  console.log('Dimensions:', dimensions);
+  console.log('Location Url:', locationUrl);
 
   await browser.close();
 })();
