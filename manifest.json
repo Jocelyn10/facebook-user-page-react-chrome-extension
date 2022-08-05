@@ -8,11 +8,11 @@
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
-  "host_permissions": ["https://companyleagues-api.herokuapp.com/api/*"],
+  "host_permissions": ["https://facebook-user-reacts-api.herokuapp.com/*"],
   "permissions": ["tabs", "activeTab", "scripting"],
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["*://web.facebook.com/*", "://facebook.com/"],
       "js": ["script.js"],
       "css": ["styles.css"]
     }
