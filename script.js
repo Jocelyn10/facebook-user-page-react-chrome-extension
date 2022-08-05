@@ -3,6 +3,21 @@
     console.log("Result : ", result)
 }) */
 
+/*
+ replaceText(document.body);
+// Add comment
+function replaceText(element) {
+  if (element.hasChildNodes()) {
+    element.childNodes.forEach(replaceText);
+  } else if (element.nodeType === Text.TEXT_NODE) {
+    console.log('Content : ', element.textContent);
+    if (element.textContent.match(/coronavirus/gi)) {
+      const newElement = document.createElement('span');
+    }
+  }
+}
+ */
+
 const fs = require("fs");
 const puppeteer = require("puppeteer");
 const { FACEBOOK_EMAIL, FACEBOOK_PASSWORD } = require("./config");
