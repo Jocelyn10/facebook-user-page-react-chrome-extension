@@ -1,112 +1,81 @@
-const fs = require('fs');
-const puppeteer = require('puppeteer');
-const { FACEBOOK_EMAIL, FACEBOOK_PASSWORD } = require('./config');
+/*fetch('https://companyleagues-api.herokuapp.com/api/challenge/custom').then(r => r.json()).then(result => {
+    // Result now contains the response text, do what you want...
+    console.log("Result : ", result)
+}) */
+
+const fs = require("fs");
+const puppeteer = require("puppeteer");
+const { FACEBOOK_EMAIL, FACEBOOK_PASSWORD } = require("./config");
 
 // if screenshots directory is not exist then create one
-if (!fs.existsSync('screenshots')) {
-  fs.mkdirSync('screenshots');
+if (!fs.existsSync("screenshots")) {
+  fs.mkdirSync("screenshots");
 }
 
-// replaceText(document.body);
-// Add comment
-/*
-function replaceText(element) {
-  if (element.hasChildNodes()) {
-    element.childNodes.forEach(replaceText);
-  } else if (element.nodeType === Text.TEXT_NODE) {
-    console.log('Content : ', element.textContent);
-    if (element.textContent.match(/coronavirus/gi)) {
-      const newElement = document.createElement('span');
-    }
-  }
-} */
-
-/*
-(async () =>{
+(async () => {
   const browser = await puppeteer.launch({ headless: true });
 
   const page = await browser.newPage();
-
-  await page.goto('https://www.facebook.com/', { waitUntil: "networkidle2" });
-  await page.waitForSelector('input[name="email"]', {
-    timeout: 10000,
-  });
-  await page.type('input[name="email"]', FACEBOOK_EMAIL, { delay: 50 });
-  await page.type('input[name="pass"]', FACEBOOK_PASSWORD, { delay: 50 });
-  await page.click('button[type="submit"]');
-  await page.waitForNavigation({ waitUntil: "networkidle2" });
-  await page.waitForTimeout(1000 + Math.floor(Math.random() * 500));
-  let bodyHTML = await page.evaluate(() => document.body.innerHTML);
-  let bodyString = bodyHTML.toString();
- console.log("Body : ", bodyString)
-})(); */
-
-(async () => {
-  const browser = await puppeteer.launch({ headless: false });
-
-  const page = await browser.newPage();
-  await page.goto('https://www.facebook.com/', { timeout: 0 });
+  await page.goto("https://www.facebook.com/", { timeout: 0 });
+  console.log("🤖🤖🤖🤖🤖 WAITING FOR LOGIN INPUTS 🤖🤖🤖🤖🤖🤖");
   await page.waitForSelector('input[name="email"]');
 
   await page.type('input[name="email"]', FACEBOOK_EMAIL);
   await page.type('input[name="pass"]', FACEBOOK_PASSWORD);
-  await page.keyboard.press('Enter');
+  await page.keyboard.press("Enter");
 
-  console.log('1');
+  console.log("🤖🤖🤖🤖🤖 LOGING 🤖🤖🤖🤖🤖🤖");
 
-  await page.waitForNavigation({ waitUntil: 'networkidle2' });
-  // await page.evaluate(() => document.querySelector('*').outerHTML);
+  await page.waitForNavigation({ waitUntil: "networkidle2" });
+  
 
-  /*
-  const locationUrl = await page.evaluate(() => {
-    return location.href;
-  }); */
-
-  console.log('2');
-
-  // Get the "viewport" of the page, as reported by the page.
-  /*
-  const dimensions = await page.evaluate(() => {
-    return {
-      width: document.documentElement.clientWidth,
-      height: document.documentElement.clientHeight,
-      deviceScaleFactor: window.devicePixelRatio,
-    };
-  }); */
+  console.log("🤖🤖🤖🤖🤖 GOING TO THE POST 🤖🤖🤖🤖🤖🤖");
 
   await page.goto(
-    'https://web.facebook.com/frendlyblog/posts/pfbid0rCRp7Qm7YGTj4Mjn4SyuPnZqRHfTATsfbpfEK14PtwwTpkhGDpcU772m4r6DiEgcl',
-    { waitUntil: 'networkidle2', timeout: 0 }
+    "https://web.facebook.com/frendlyblog/posts/pfbid0rCRp7Qm7YGTj4Mjn4SyuPnZqRHfTATsfbpfEK14PtwwTpkhGDpcU772m4r6DiEgcl",
+    { waitUntil: "networkidle2", timeout: 0 }
   );
-  console.log('3');
-  await page.screenshot({ path: 'blogPage.png' });
 
-  // await page.waitForNavigation({ waitUntil: 'networkidle2' });
-  // await page.evaluate(() => document.querySelector('*').outerHTML);
+  console.log("🤖🤖🤖🤖🤖 CLICK ON LIKE BTN 🤖🤖🤖🤖🤖🤖");
+  
+  await page.waitForSelector('img[role="presentation"]');
+  await page.click('img[role="presentation"]');
 
-  const divs = await page.$$eval('div[role="article"]', (divs) =>
+  page.waitForNavigation({ waitUntil: "networkidle0" });
+
+  await page.waitForSelector('div[aria-label="Fermer"]');
+
+  await delay(7000);
+
+  console.log("🤖🤖🤖🤖🤖 GETING DATA FROM MODAL 🤖🤖🤖🤖🤖");
+
+  const links = await page.$$eval('div[role="dialog"]', (divs) =>
     divs.map((div) => {
       return {
-        text: div.textContent,
         html: div.innerHTML,
-        ariaLabel: div.ariaLabel,
       };
     })
   );
 
-  await page.click('span[aria-label="Voir qui a réagi"]');
+  const modal = links[1];
 
-  /*  
-  for (let i = 0; i < 1; i++) {
-    reactionBtn[i].click();
+  var patt = /<a[^>]*label=["']([^"']*)["']/g;
 
-    await page.waitForNavigation();
-    await page.evaluate(() => document.querySelector('*').outerHTML);
-  } */
 
-  console.log('divs : ', divs);
-  // console.log('Dimensions : ', dimensions);
-  // console.log('Location Url : ', locationUrl);
+  console.log("🤖🤖🤖🤖🤖 PERSONS WHO LIKE THE POST 🤖🤖🤖🤖🤖🤖");
+  console.log("                                             ");
+  console.log("                                             ");
+  console.log("                ---🤖---                     ");
+  while(match=patt.exec(modal.html)){
+    console.log(match[1]);
+  }
+  console.log("                ---🤖---                     ");
 
   await browser.close();
 })();
+
+function delay(time) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, time);
+  });
+}

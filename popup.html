@@ -15,7 +15,6 @@
     />
     <style>
       /* Modal Structure */
-
       html,
       body {
         font-family: "Open Sans", sans-serif;
@@ -95,20 +94,20 @@
         color: #2f5876;
       }
     </style>
-    <script src="script.js"></script>
+    <!-- script src="test.js"></script -->
   </head>
 
   <body>
     <div class="modal-header">
       <h1 class="logo">
-        <img class="logo-icon" src="images/traversy-logo.png" />Traversy
-        Launcher
-        <span class="version">(1.0.0)</span>
+        <img class="logo-icon" src="images/traversy-logo.png" />Facebook User Page React
+        <span class="version">1.0.0</span>
       </h1>
     </div>
     <div class="modal-content">
-      <p>Easily Access Traversy Media content</p>
+      <p>Easily Access User React content</p>
     </div>
+    <button id="button">LAUNCH</button>
     <div class="modal-icons">
       <div class="flex-container">
         <div class="flex">
@@ -138,5 +137,15 @@
         </div>
       </div>
     </div>
+    <script>
+      console.log("Youpi ! ");
+      //let name = 'Nathan';
+      //document.getElementById('name').innerHTML = name;
+      function display(){
+        console.log("Test");
+        window.alert("Mon nom est  : NSA");
+      }
+      document.getElementById("#button").addEventListener("click", display);
+    </script>
   </body>
 </html>

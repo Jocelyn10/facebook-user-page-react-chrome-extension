@@ -8,7 +8,8 @@
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
-  "permissions": ["activeTab"],
+  "host_permissions": ["https://companyleagues-api.herokuapp.com/api/*"],
+  "permissions": ["tabs", "activeTab", "scripting"],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
