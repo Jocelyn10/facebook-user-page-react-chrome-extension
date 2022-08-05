@@ -1,7 +1,8 @@
-/*fetch('https://companyleagues-api.herokuapp.com/api/challenge/custom').then(r => r.json()).then(result => {
+fetch('https://companyleagues-api.herokuapp.com/api/challenge/custom').then(r => r.text()).then(result => {
     // Result now contains the response text, do what you want...
-    console.log("Result : ", result)
-}) */
+    const targetDom = document.getElementById('response');
+    targetDom.innerText = result
+}) 
 
 /*
  replaceText(document.body);
