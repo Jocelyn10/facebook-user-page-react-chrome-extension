@@ -12,7 +12,7 @@
   "permissions": ["tabs", "activeTab", "scripting"],
   "content_scripts": [
     {
-      "matches": ["*://web.facebook.com/*", "://facebook.com/"],
+      "matches": ["*://web.facebook.com/*", "*://facebook.com/*"],
       "js": ["script.js"],
       "css": ["styles.css"]
     }
