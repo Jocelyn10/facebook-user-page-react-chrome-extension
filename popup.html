@@ -47,6 +47,9 @@
     }
 
     .modal-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border-top: 0.5px solid #dadada;
       height: 50px;
       width: 100%;
@@ -91,6 +94,28 @@
       font-size: 40px;
       color: #2f5876;
     }
+
+    .loader {
+      margin-right: 1rem;
+      border: 6px solid #f3f3f3;
+      /* Light grey */
+      border-top: 6px solid #3498db;
+      /* Blue */
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   </style>
   <script src="script.js"></script>
 </head>
@@ -115,6 +140,7 @@
   </div>
   <div class="modal-icons">
     <p id="response"></p>
+    <div class="loader"></div> <span id="loading-text">Chargement...</span>
   </div>
 </body>
 
